@@ -1,9 +1,11 @@
 import React,{useState} from 'react'
 import './searchmain.css'
+import WeatherDetails from './WeatherDetails'
 
 function SearchMain() {
 
   const [cityName,setCityName] = useState('')
+  const [] = useState('')
 
   const handleSearchClick = (e) =>{
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=680c7d7a6fb668232ceac51be84cb2c5`)
@@ -17,6 +19,7 @@ function SearchMain() {
   }
 
   return (
+    <>
     <div className='wrap'>
         <div className='search'>
             <input type="search" placeholder='city..' id="search" onChange={handleSearchInput}></input>
@@ -25,6 +28,8 @@ function SearchMain() {
             Search    
         </button>
     </div>
+    <WeatherDetails city={cityName}></WeatherDetails>
+    </>
   )
 }
 
