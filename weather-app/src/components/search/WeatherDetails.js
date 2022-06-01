@@ -1,6 +1,7 @@
 import React from 'react'
 
 function WeatherDetails(props) {
+const sunsetDate = new Date(props.sunsetTime*100)
   return (
     <article className='widget'>
         <div className='weatherIcon'>
@@ -8,11 +9,11 @@ function WeatherDetails(props) {
         </div>
         <div className='weatherInfo'>
             <div className='temperature'>
-                <span>23.99&deg;</span>
+                <span>{props.temp}&deg;</span>
             </div>
             <div className='description'>
                 <div className='weatherCondition'>
-                    Sunny
+                    {props.weatherType}
                 </div>
                 <div className='place'>
                     {props.city}
@@ -27,7 +28,7 @@ function WeatherDetails(props) {
                         <i className={"wi wi-sunset"}></i>
                     </p>
                     <p className='extra-info-leftside'>
-                        6:30pm<br></br>
+                        {sunsetDate.getHours()} : {sunsetDate.getMinutes()}<br></br>
                         Sunset
                     </p>
                 </div>
@@ -38,7 +39,7 @@ function WeatherDetails(props) {
                         <i className={"wi wi-humidity"}></i>
                     </p>
                     <p className='extra-info-leftside'>
-                        444<br></br>
+                        {props.humidity}<br></br>
                         humidity
                     </p>
                 </div>
@@ -49,7 +50,7 @@ function WeatherDetails(props) {
                         <i className={"wi wi-rain"}></i>
                     </p>
                     <p className='extra-info-leftside'>
-                        6:30pm<br></br>
+                        {props.pressure}<br></br>
                         Pressure
                     </p>
                 </div>
@@ -60,7 +61,7 @@ function WeatherDetails(props) {
                         <i className={"wi wi-strong-wind"}></i>
                     </p>
                     <p className='extra-info-leftside'>
-                        6:30pm<br></br>
+                        {props.windSpeed}<br></br>
                         Speed
                     </p>
                 </div>
