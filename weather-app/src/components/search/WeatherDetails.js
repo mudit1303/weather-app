@@ -1,11 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function WeatherDetails(props) {
 const sunsetDate = new Date(props.sunsetTime*100)
+const [waetherState,setWeatherState] = useState('')
+
+React.useEffect(()=>{
+    switch(props.weatherType){
+        case "Clouds":
+          setWeatherState("wi-day-cloudy");
+          break;
+        case "Haze":
+          setWeatherState("wi-fog");
+          break;
+        case "Clear":
+          setWeatherState("wi-day-sunny");
+          break;
+        case "Mist":
+          setWeatherState("wi-dust");
+          break;
+        case "Rain":
+          setWeatherState("wi-day-rain");
+          break;
+
+        default:
+          setWeatherState("wi-day-sunny");
+          break;
+    }
+},[props.weatherType])
+
   return (
     <article className='widget'>
         <div className='weatherIcon'>
-            <i className="wi wi-day-sunny"></i>
+            <i className={`wi ${waetherState}`}></i>
         </div>
         <div className='weatherInfo'>
             <div className='temperature'>
